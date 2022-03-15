@@ -10,34 +10,7 @@ public class Pizza {
     List<String> ingredients;
     String blatType;
     int totalPrice;
-
-    public Pizza() {
-        name = "Margherita";
-        size = 1;
-        ingredients = new ArrayList<>();
-        ingredients.add("Tomato");
-        ingredients.add("Basil");
-        ingredients.add("Cheese");
-        blatType = "Thin"; //Thick
-    }
-
-    //overloaded constructors
-    public Pizza(String nameOfPizza) {
-        name = nameOfPizza;
-    }
-
-    //overloaded constructors
-    public Pizza(String nameOfPizza, int sizeOfPizza) {
-        name = nameOfPizza;
-        size = sizeOfPizza;
-    }
-
-    //overloaded constructors
-    public Pizza(String nameOfPizza, int sizeOfPizza, String blatTypeOfPizza) {
-        name = nameOfPizza;
-        size = sizeOfPizza;
-        blatType = blatTypeOfPizza;
-    }
+    double priceSize;
 
     //overloaded constructors
     public Pizza(String name, int size, List<String> ingredients, String blatType) {
@@ -55,10 +28,49 @@ public class Pizza {
     }
 
     public double calculatePrice() {
-        if (size == 1) {
-            totalPrice = totalPrice + 10;
-        }
+        double priceTomato = 0;
+        double priceOlive = 0;
+        double priceCheese = 0;
+        double pricePepper = 0;
+        double priceOnion = 0;
+        double priceBandO = 0;
+        double priceSize = 0;
+        double priceDough = 0;
 
-        return 0;
+        if (size == 1) {
+            priceSize = 10;
+        } else if (size == 2) {
+            priceSize = 20;
+        } else if (size == 3) {
+            priceSize = 30;
+        }
+        if (blatType.equals("Thin")) {
+            priceDough = 35;
+        } else if (blatType.equals("Thick")) {
+            priceDough = 35;
+        }
+        if (ingredients.contains("Tomato")) {
+            priceTomato = 12;
+        }
+        if (ingredients.contains("Olive")) {
+            priceOlive = 15.5;
+        }
+        if (ingredients.contains("Cheese")) {
+            priceCheese = 20.5;
+        }
+        if (ingredients.contains("Pepper")) {
+            pricePepper = 17.5;
+        }
+        if (ingredients.contains("Onion")) {
+            priceOnion = 11;
+        }
+        if (ingredients.contains("Basil and Oregano")) {
+            priceBandO = 5;
+        }
+        double priceIngredients = priceTomato + priceOlive + priceCheese + pricePepper + priceOnion + priceBandO;
+        double finalPrice = priceSize + priceDough + priceIngredients;
+
+        return finalPrice;
+
     }
 }
